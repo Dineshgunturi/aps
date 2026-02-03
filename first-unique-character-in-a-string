@@ -1,0 +1,36 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution {
+
+    public int firstUniqChar(String s) {
+        
+        Map<Character, Integer> counts = new HashMap<>();
+
+       
+        for (char c : s.toCharArray()) {
+            counts.put(c, counts.getOrDefault(c, 0) + 1);
+        }
+
+       
+        for (int i = 0; i < s.length(); i++) {
+            if (counts.get(s.charAt(i)) == 1) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        String s1 = "leetcode";
+        System.out.println("Input: s = \"" + s1 + "\"");
+        System.out.println("Output: " + sol.firstUniqChar(s1)); 
+        String s2 = "loveleetcode";
+        System.out.println("Input: s = \"" + s2 + "\"");
+        System.out.println("Output: " + sol.firstUniqChar(s2)); 
+        String s3 = "aabb";
+        System.out.println("Input: s = \"" + s3 + "\"");
+        System.out.println("Output: " + sol.firstUniqChar(s3)); 
+    }
+}
